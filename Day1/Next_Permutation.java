@@ -1,7 +1,5 @@
 package Day1;
 
-import java.util.* ;
-import java.io.*; 
 import java.util.ArrayList;
 import java.util.Collections;
 
