@@ -1,3 +1,4 @@
+package Day2;
 // Intuition: Since there is a duplicate number, we can always say that cycle will be formed.
 // The slow pointer moves by one step and the fast pointer moves by 2 steps and there exists a cycle so the first collision is bound to happen.
 
