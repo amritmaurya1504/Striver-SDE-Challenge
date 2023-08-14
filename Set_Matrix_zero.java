@@ -1,4 +1,4 @@
-package Day1;
+
 
 class Set_Matrix_zero {
     // BRUTE FORCE SOLUTION

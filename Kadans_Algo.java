@@ -1,4 +1,4 @@
-package Day1;
+
 
 public class Kadans_Algo {
     public static long maxSubarraySum(int[] arr, int n) {
