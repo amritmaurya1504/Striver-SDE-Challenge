@@ -1,0 +1,93 @@
+
+// OPTIMAL USING MAP
+
+import java.util.* ;
+import java.io.*; 
+public class Solution 
+{
+	public static int uniqueSubstrings(String input) 
+    {
+		HashMap<Character, Integer> map = new HashMap<>();
+		int i = 0; int j = 0;
+		int ans = Integer.MIN_VALUE;
+		while(j < input.length()){
+			map.put(input.charAt(j), map.getOrDefault(
+				input.charAt(j), 0) + 1);
+
+			if(map.size() == j - i + 1){
+				ans = Math.max(ans, j - i + 1);
+			}
+
+			while(map.size() < (j - i + 1)){
+				char c = input.charAt(i);
+				map.put(c, map.get(c) - 1);
+				if(map.get(c) == 0) map.remove(c);
+				i++;
+			}
+
+			j++;
+		}
+		return ans;
+	}
+}
+
+
+// OPTIMAL USING SET
+
+import java.util.* ;
+import java.io.*; 
+public class Solution 
+{
+	public static int uniqueSubstrings(String input) 
+    {
+		HashSet<Character> set = new HashSet<>();
+		int i = 0; int j = 0;
+		int ans = Integer.MIN_VALUE;
+		while(j < input.length()){
+			if (set.contains(input.charAt(j))) {
+                set.remove(input.charAt(i));
+                i++;
+            } else {
+                set.add(input.charAt(j));
+                ans = Math.max(ans, j - i + 1);
+                j++;
+            }
+		}
+		return ans;
+	}
+}
+
+
+
+
+
+
+
+// BRUTE FORCE 
+
+import java.util.* ;
+import java.io.*; 
+public class Solution 
+{
+	public static int uniqueSubstrings(String input) 
+    {
+		int ans = 1;
+		int[] freq = new int[26];
+		for(int i = 0; i < input.length(); i++){
+			int distinct = 0;
+			Arrays.fill(freq, 0);
+			for(int j = i; j < input.length(); j++){
+				char c = input.charAt(j);
+				if(freq[c - 'a'] == 0){
+					distinct++;
+					freq[c - 'a']++;
+				}else{
+					break;
+				}
+
+				ans = Math.max(ans, j - i + 1);
+			}	
+		}
+		return ans;
+	}
+}
